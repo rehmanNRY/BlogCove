@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Container, PostCard } from "../components";
-import { useNavigate, useParams } from "react-router-dom";
 import appwriteService from "../appwrite/conf";
 
 const Home = () => {

@@ -5,9 +5,9 @@ export class AuthService {
   client = new Client();
   account;
   constructor() {
-    this.client.
-    setEndpoint(config.appwriteUrl).
-    setProject(config.appwriterPojectId);
+    this.client
+    .setEndpoint(config.appwriteUrl)
+    .setProject(config.appwriterPojectId);
     this.account = new Account(this.client);
   }
 
@@ -29,12 +29,14 @@ export class AuthService {
   // Login
   async login({ email, password }) {
     try {
-      return await this.account.createEmailPasswordSession(email, password);
+      const session = await this.account.createEmailPasswordSession(email, password);
+      return session; // Ensure session is successfully created and returned
     } catch (error) {
-      console.log("Appwrite service is :: createAccount :: error", error);
+      console.log("Appwrite service is :: login :: error", error);
     }
     return null;
   }
+  
 
   // Get current user
   async getCurrentuser() {
